@@ -16,8 +16,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JProgressBar;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.Cursor;
 
 @SuppressWarnings("serial")
 public class mainGUI extends JFrame {
@@ -101,7 +113,7 @@ public class mainGUI extends JFrame {
 
 		JPanel rightSidePanel = new JPanel();
 		rightSidePanel.setBackground(new Color(0, 18, 50));
-		rightSidePanel.setBounds(1020, 50, 180, 670);
+		rightSidePanel.setBounds(1020, 130, 180, 590);
 		contentPane.add(rightSidePanel);
 		rightSidePanel.setLayout(null);
 
@@ -193,33 +205,51 @@ public class mainGUI extends JFrame {
 		topPanel.add(label_1);
 
 		JPanel midPanel = new JPanel();
-		midPanel.setBounds(60, 50, 960, 270);
+		midPanel.setBounds(60, 50, 1020, 80);
 		contentPane.add(midPanel);
 
 		JPanel botPanel = new JPanel();
 		botPanel.setBackground(new Color(32,47,90));
-		botPanel.setBounds(60, 320, 960, 400);
+		botPanel.setBounds(60, 130, 960, 590);
 		contentPane.add(botPanel);
 		botPanel.setLayout(null);
-
-		JPanel largePanel = new JPanel();
-		largePanel.setBackground(new Color(106,116,145));
-		largePanel.setBounds(31, 11, 919, 120);
-		botPanel.add(largePanel);
-
-		JPanel leftPanel = new JPanel();
-		leftPanel.setBackground(new Color(106,116,145));
-		leftPanel.setBounds(31, 149, 261, 240);
-		botPanel.add(leftPanel);
-
-		JPanel centerPanel = new JPanel();
-		centerPanel.setBackground(new Color(106, 116, 145));
-		centerPanel.setBounds(344, 149, 300, 240);
-		botPanel.add(centerPanel);
-
-		JPanel rightPanel = new JPanel();
-		rightPanel.setBackground(new Color(106, 116, 145));
-		rightPanel.setBounds(689, 149, 261, 240);
-		botPanel.add(rightPanel);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		scrollPane.setBorder(null);
+		scrollPane.setBounds(40, 40, 868, 510);
+		scrollPane.setBackground(new Color(32, 47, 90));
+		scrollPane.setViewportBorder(null);
+		botPanel.add(scrollPane);
+		
+		JList list = new JList();
+		DefaultListModel<ImageIcon> model = new DefaultListModel<ImageIcon>();
+		ImageIcon img = new ImageIcon((new ImageIcon("image.jpg"))
+				.getImage().getScaledInstance(50,50,
+						java.awt.Image.SCALE_SMOOTH));
+		model.add(0, img);
+		model.add(1, img);
+		model.add(2, img);
+		model.add(3, img);
+		model.add(4, img);
+		model.add(5, img);
+		model.add(6, img);
+		model.add(7, img);
+		model.add(8, img);
+		model.add(9, img);
+		model.add(10, img);
+		model.add(11, img);
+		model.add(12, img);
+		model.add(13, img);
+		model.add(14, img);
+		model.add(15, img);
+		model.add(16, img);
+		model.add(17, img);
+		model.add(18, img);
+		model.add(19, img);
+		model.add(20, img);
+		list.setModel(model);
+		list.setBackground(new Color(32, 47, 90));
+		scrollPane.setViewportView(list);
 	}
 }

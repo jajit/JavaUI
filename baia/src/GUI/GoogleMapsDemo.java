@@ -11,8 +11,8 @@ public class GoogleMapsDemo {
 	public static void main(String[] args) throws IOException {
 		JFrame test = new JFrame("Google Maps");
 		try {
-			String latitude = "40.714728";
-			String longitude = "-73.998672";
+			//String latitude = "40.714728";
+			//String longitude = "-73.998672";
 			/*String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center="
 					+ latitude
 					+ ","

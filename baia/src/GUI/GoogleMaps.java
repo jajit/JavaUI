@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,6 +16,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+@SuppressWarnings("serial")
 public class GoogleMaps extends JFrame {
 
 	private JPanel contentPane;

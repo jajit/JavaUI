@@ -90,7 +90,8 @@ public class ButtonTest {
         private boolean rectangularLAF;
         private float alpha = 1f;
 
-        SoftJButton() {
+        @SuppressWarnings("unused")
+		SoftJButton() {
             this(null, null);
         }
 

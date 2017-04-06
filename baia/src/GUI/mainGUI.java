@@ -1,27 +1,25 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
-import javax.swing.Timer;
-
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import javax.swing.JCheckBox;
-import java.awt.Window.Type;
 
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
+
+@SuppressWarnings("serial")
 public class mainGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -29,7 +27,9 @@ public class mainGUI extends JFrame {
 
 	private int xMouse;
 	private int yMouse;
+	@SuppressWarnings("unused")
 	private int max = 900;
+	@SuppressWarnings("unused")
 	private double current = 1020;
 	private double speed = 1.25;
 	private boolean active = false;

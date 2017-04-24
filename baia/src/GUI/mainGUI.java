@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
@@ -43,8 +44,9 @@ public class mainGUI extends JFrame {
 	private int max = 900;
 	@SuppressWarnings("unused")
 	private double current = 1020;
-	private double speed = 1.25;
+	private double speed = 1;
 	private boolean active = false;
+	private JPanel botPanel;
 
 	/**
 	 * Launch the application.
@@ -124,11 +126,20 @@ public class mainGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				// Codigo del slide del sidePanel
 				new Timer(1, new ActionListener() {
+					Date prev = new Date();
+					Date now;
+					
 					public void actionPerformed(ActionEvent e) {
+						now = new Date();
+						long deltaTime = now.getTime()-prev.getTime();
+						System.out.println(deltaTime);
+						long realSpeed = (int)speed * deltaTime;
+						
 						if(rightSidePanel.getX() > 900 && !active){
 							
 							current -= speed;
-							rightSidePanel.setBounds((int) (rightSidePanel.getX()-speed), rightSidePanel.getY(), rightSidePanel.getWidth(), rightSidePanel.getHeight());
+							rightSidePanel.setBounds((int) (rightSidePanel.getX()-realSpeed), rightSidePanel.getY(), rightSidePanel.getWidth(), rightSidePanel.getHeight());
+							botPanel.setBounds(botPanel.getX(),botPanel.getY(), (int)(botPanel.getWidth()-realSpeed), botPanel.getHeight());
 							
 							if(rightSidePanel.getX() <= 900){
 								((Timer) e.getSource()).stop();
@@ -138,7 +149,9 @@ public class mainGUI extends JFrame {
 						}else{
 							
 							current += speed;
-							rightSidePanel.setBounds((int) (rightSidePanel.getX()+speed), rightSidePanel.getY(), rightSidePanel.getWidth(), rightSidePanel.getHeight());
+							rightSidePanel.setBounds((int) (rightSidePanel.getX()+realSpeed), rightSidePanel.getY(), rightSidePanel.getWidth(), rightSidePanel.getHeight());
+							botPanel.setBounds(botPanel.getX(),botPanel.getY(), (int)(botPanel.getWidth()+realSpeed), botPanel.getHeight());
+							
 							System.out.println(rightSidePanel.getX());
 							if(rightSidePanel.getX() >= 1020){
 								active = false;
@@ -146,6 +159,7 @@ public class mainGUI extends JFrame {
 								System.out.println("Timer stopped");
 							}
 						}
+						prev = new Date();
 					}
 				}).start();
 
@@ -208,7 +222,7 @@ public class mainGUI extends JFrame {
 		midPanel.setBounds(60, 50, 1020, 80);
 		contentPane.add(midPanel);
 
-		JPanel botPanel = new JPanel();
+		botPanel = new JPanel();
 		botPanel.setBackground(new Color(32,47,90));
 		botPanel.setBounds(60, 130, 960, 590);
 		contentPane.add(botPanel);

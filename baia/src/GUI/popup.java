@@ -11,6 +11,17 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.SpringLayout;
 
 @SuppressWarnings("serial")
 public class popup extends JDialog {
@@ -80,10 +91,14 @@ public class popup extends JDialog {
 		panel.setBounds(389, 210, 300, 300);
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(panel);
-		panel.setLayout(null);
+		SpringLayout sl_panel = new SpringLayout();
+		panel.setLayout(sl_panel);
 		
-		JButton btnHolaBuenas = new JButton("Boton");
-		btnHolaBuenas.setBounds(250, 280, 100, 40);
-		panel.add(btnHolaBuenas);
+		JButton button = new JButton("Boton");
+		sl_panel.putConstraint(SpringLayout.NORTH, button, 285, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, button, 263, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, button, -286, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, button, -264, SpringLayout.EAST, panel);
+		panel.add(button);
 	}
 }

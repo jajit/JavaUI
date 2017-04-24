@@ -126,13 +126,15 @@ public class mainGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				// Codigo del slide del sidePanel
 				new Timer(1, new ActionListener() {
+					
 					Date prev = new Date();
 					Date now;
 					
 					public void actionPerformed(ActionEvent e) {
+						
 						now = new Date();
 						long deltaTime = now.getTime()-prev.getTime();
-						System.out.println(deltaTime);
+						System.out.println("DeltaTime: " + deltaTime);
 						long realSpeed = (int)speed * deltaTime;
 						
 						if(rightSidePanel.getX() > 900 && !active){
@@ -152,7 +154,7 @@ public class mainGUI extends JFrame {
 							rightSidePanel.setBounds((int) (rightSidePanel.getX()+realSpeed), rightSidePanel.getY(), rightSidePanel.getWidth(), rightSidePanel.getHeight());
 							botPanel.setBounds(botPanel.getX(),botPanel.getY(), (int)(botPanel.getWidth()+realSpeed), botPanel.getHeight());
 							
-							System.out.println(rightSidePanel.getX());
+							//System.out.println(rightSidePanel.getX());
 							if(rightSidePanel.getX() >= 1020){
 								active = false;
 								((Timer) e.getSource()).stop();

@@ -42,7 +42,7 @@ public class CustomScrollbarUIExample {
         };
 
         MyScrollbarUI() {
-            imageThumb = FauxImage.create(32, 32, Color.blue.darker());
+            imageThumb = FauxImage.create(32, 32, new Color (1, 170, 235));
             imageTrack = FauxImage.create(32, 32, Color.lightGray);
         }
 

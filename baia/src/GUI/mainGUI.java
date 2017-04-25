@@ -21,6 +21,7 @@ import javax.swing.ListModel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollBar;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
@@ -29,6 +30,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+
+import GUI.CustomScrollbarUIExample.MyScrollbarUI;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Cursor;
 
@@ -36,7 +40,7 @@ import java.awt.Cursor;
 public class mainGUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtSearch;
 
 	private int xMouse;
 	private int yMouse;
@@ -189,45 +193,66 @@ public class mainGUI extends JFrame {
 
 		JLabel lblSearch = new JLabel("");
 		lblSearch.setIcon(new ImageIcon("resources\\icons\\Search_50px.png"));
-		lblSearch.setBounds(50, 0, 46, 50);
+		lblSearch.setBounds(50, 0, 50, 50);
 		topPanel.add(lblSearch);
 
 		JSeparator separator = new JSeparator();
 		separator.setBounds(124, 37, 215, 2);
 		topPanel.add(separator);
 
-		textField = new JTextField();
-		textField.setFont(new Font("Segoe UI Light", Font.PLAIN, 20));
-		textField.setBorder(null);
-		textField.setBounds(124, 11, 215, 20);
-		topPanel.add(textField);
-		textField.setColumns(10);
+		txtSearch = new JTextField();
+		txtSearch.setForeground(Color.BLACK);
+		txtSearch.setToolTipText("");
+		txtSearch.setFont(new Font("Segoe UI Light", Font.PLAIN, 20));
+		txtSearch.setBorder(null);
+		txtSearch.setBounds(124, 11, 215, 20);
+		topPanel.add(txtSearch);
+		txtSearch.setColumns(10);
 
-		JLabel label = new JLabel("");
-		label.addMouseListener(new MouseAdapter() {
+		JLabel lblClose = new JLabel("");
+		lblClose.setToolTipText("Close");
+		lblClose.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.exit(0);
 			}
 		});
-		label.setIcon(new ImageIcon("resources\\icons\\Cancel_40px.png"));
-		label.setBounds(970, 0, 40, 40);
-		topPanel.add(label);
+		lblClose.setIcon(new ImageIcon("resources\\icons\\Cancel_40px.png"));
+		lblClose.setBounds(970, 5, 40, 40);
+		topPanel.add(lblClose);
 
-		JLabel label_1 = new JLabel("");
-		label_1.addMouseListener(new MouseAdapter() {
+		JLabel lblMinimize = new JLabel("");
+		lblMinimize.setToolTipText("Minimize");
+		lblMinimize.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setState(JFrame.ICONIFIED);
 			}
 		});
-		label_1.setIcon(new ImageIcon("resources\\icons\\Minus_40px.png"));
-		label_1.setBounds(930, -1, 40, 40);
-		topPanel.add(label_1);
+		lblMinimize.setIcon(new ImageIcon("resources\\icons\\Minus_40px.png"));
+		lblMinimize.setBounds(930, 5, 40, 40);
+		topPanel.add(lblMinimize);
+		
+		JLabel lblUser = new JLabel("");
+		lblUser.setIcon(new ImageIcon("resources\\icons\\Circled User Male_50px.png"));
+		lblUser.setBounds(771, 0, 50, 50);
+		topPanel.add(lblUser);
+		
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setToolTipText("Log In");
+		lblLogin.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
+		lblLogin.setBounds(830, 12, 90, 28);
+		topPanel.add(lblLogin);
 
 		JPanel midPanel = new JPanel();
 		midPanel.setBounds(60, 50, 1020, 80);
 		contentPane.add(midPanel);
+		midPanel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("resources\\icons\\Country_House.png"));
+		lblNewLabel_1.setBounds(808, 0, 202, 80);
+		midPanel.add(lblNewLabel_1);
 
 		botPanel = new JPanel();
 		botPanel.setBackground(new Color(32,47,90));
@@ -236,9 +261,11 @@ public class mainGUI extends JFrame {
 		botPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		JScrollBar sb = scrollPane.getVerticalScrollBar();
+		sb.setUI(new MyScrollbarUI());
 		scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		scrollPane.setBorder(null);
-		scrollPane.setBounds(40, 40, 910, 510);
+		scrollPane.setBounds(40, 11, 910, 539);
 		scrollPane.setBackground(new Color(32, 47, 90));
 		scrollPane.setViewportBorder(null);
 		botPanel.add(scrollPane);

@@ -174,7 +174,7 @@ public class mainGUI extends JFrame {
 
 		});
 		lblFiltros.setIcon(new ImageIcon("resources\\icons\\Filter_50px.png"));
-		lblFiltros.setBounds(10, 10, 40, 40);
+		lblFiltros.setBounds(5, 11, 50, 50);
 		rightSidePanel.add(lblFiltros);
 		
 		JCheckBox chckbxBuenFiltro = new JCheckBox("Buen filtro");
@@ -238,7 +238,7 @@ public class mainGUI extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		scrollPane.setBorder(null);
-		scrollPane.setBounds(40, 40, 868, 510);
+		scrollPane.setBounds(40, 40, 910, 510);
 		scrollPane.setBackground(new Color(32, 47, 90));
 		scrollPane.setViewportBorder(null);
 		botPanel.add(scrollPane);
@@ -246,7 +246,7 @@ public class mainGUI extends JFrame {
 		JList list = new JList();
 		DefaultListModel<ImageIcon> model = new DefaultListModel<ImageIcon>();
 		ImageIcon img = new ImageIcon((new ImageIcon("image.jpg"))
-				.getImage().getScaledInstance(50,50,
+				.getImage().getScaledInstance(100,100,
 						java.awt.Image.SCALE_SMOOTH));
 		model.add(0, img);
 		model.add(1, img);

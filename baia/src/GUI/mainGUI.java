@@ -91,9 +91,14 @@ public class mainGUI extends JFrame {
 				bai.setVisible(true);
 			}
 		});
-		lblNewLabel.setIcon(new ImageIcon("D:\\Users\\Ruben\\Documents\\NetBeansProjects\\PruebaInterfaz\\icon\\Xbox Menu_40px.png"));
-		lblNewLabel.setBounds(10, 10, 40, 40);
+		lblNewLabel.setIcon(new ImageIcon("resources\\icons\\Xbox Menu_50px.png"));
+		lblNewLabel.setBounds(5, 10, 50, 50);
 		leftSidePanel.add(lblNewLabel);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon("resources\\icons\\Add House_50px.png"));
+		label_2.setBounds(5, 155, 50, 50);
+		leftSidePanel.add(label_2);
 
 		JPanel topPanel = new JPanel();
 		topPanel.addMouseMotionListener(new MouseMotionAdapter() {
@@ -168,7 +173,7 @@ public class mainGUI extends JFrame {
 			}
 
 		});
-		lblFiltros.setIcon(new ImageIcon("D:\\Users\\Ruben\\Documents\\NetBeansProjects\\PruebaInterfaz\\icon\\Filter_40px.png"));
+		lblFiltros.setIcon(new ImageIcon("resources\\icons\\Filter_50px.png"));
 		lblFiltros.setBounds(10, 10, 40, 40);
 		rightSidePanel.add(lblFiltros);
 		
@@ -183,7 +188,7 @@ public class mainGUI extends JFrame {
 		topPanel.setLayout(null);
 
 		JLabel lblSearch = new JLabel("");
-		lblSearch.setIcon(new ImageIcon("D:\\Users\\Ruben\\Documents\\NetBeansProjects\\PruebaInterfaz\\icon\\Search_50px.png"));
+		lblSearch.setIcon(new ImageIcon("resources\\icons\\Search_50px.png"));
 		lblSearch.setBounds(50, 0, 46, 50);
 		topPanel.add(lblSearch);
 
@@ -205,7 +210,7 @@ public class mainGUI extends JFrame {
 				System.exit(0);
 			}
 		});
-		label.setIcon(new ImageIcon("D:\\Users\\Ruben\\Documents\\NetBeansProjects\\PruebaInterfaz\\icon\\Xbox X_40px_1.png"));
+		label.setIcon(new ImageIcon("resources\\icons\\Cancel_40px.png"));
 		label.setBounds(970, 0, 40, 40);
 		topPanel.add(label);
 
@@ -216,7 +221,7 @@ public class mainGUI extends JFrame {
 				setState(JFrame.ICONIFIED);
 			}
 		});
-		label_1.setIcon(new ImageIcon("D:\\Users\\Ruben\\Documents\\NetBeansProjects\\PruebaInterfaz\\icon\\Minus_40px.png"));
+		label_1.setIcon(new ImageIcon("resources\\icons\\Minus_40px.png"));
 		label_1.setBounds(930, -1, 40, 40);
 		topPanel.add(label_1);
 

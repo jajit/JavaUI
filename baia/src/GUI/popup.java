@@ -20,7 +20,6 @@ import javax.swing.GroupLayout.Alignment;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.SpringLayout;
 
 @SuppressWarnings("serial")

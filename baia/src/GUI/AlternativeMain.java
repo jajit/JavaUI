@@ -55,12 +55,6 @@ public class AlternativeMain extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblMsFiltros = new JLabel("Encuentra el viaje de tus sue\u00F1os en tan solo unos clicks");
-		lblMsFiltros.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
-		lblMsFiltros.setForeground(new Color(255, 255, 255));
-		lblMsFiltros.setBounds(275, 22, 513, 31);
-		panel_1.add(lblMsFiltros);
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(22,21,23,230));
 		panel_2.setBounds(0, 0, 1064, 68);
@@ -92,7 +86,7 @@ public class AlternativeMain extends JFrame {
 		panel_3.add(panel_4);
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon("D:\\Users\\Ruben\\Desktop\\Marker_32px.png"));
+		label_1.setIcon(new ImageIcon("resources\\icons\\Marker_32px.png"));
 		panel_4.add(label_1);
 		
 		txtFechaDeInicio = new JTextField();
@@ -108,8 +102,8 @@ public class AlternativeMain extends JFrame {
 		panel_5.setBounds(320, 40, 45, 45);
 		panel_3.add(panel_5);
 		
-		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon("D:\\Users\\Ruben\\Desktop\\Date From_32px.png"));
+		JLabel label_2 = new JLabel();
+		label_2.setIcon(new ImageIcon("resources\\icons\\Date From_32px.png"));
 		panel_5.add(label_2);
 		
 		txtFechaDeVuelta = new JTextField();
@@ -126,7 +120,7 @@ public class AlternativeMain extends JFrame {
 		panel_3.add(panel_6);
 		
 		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon("D:\\Users\\Ruben\\Desktop\\Date To_32px.png"));
+		label_3.setIcon(new ImageIcon("resources\\icons\\Date To_32px.png"));
 		panel_6.add(label_3);
 		
 		JPanel panel_7 = new JPanel();
@@ -143,12 +137,25 @@ public class AlternativeMain extends JFrame {
 		
 		JLabel label_4 = new JLabel("");
 		label_4.setBounds(22, 14, 99, 99);
-		label_4.setIcon(new ImageIcon("D:\\Users\\Ruben\\Desktop\\Circle_99px.png"));
+		label_4.setIcon(new ImageIcon("resources\\icons\\Circle_99px.png"));
 		panel_7.add(label_4);
 		
-		JLabel label = new JLabel("");
-		label.setBounds(0, 5, 1064, 426);
-		label.setIcon(new ImageIcon("D:\\Users\\Ruben\\Desktop\\02990_valleyhouse_2560x1024.jpg"));
-		panel.add(label);
+		JLabel lblViaje = new JLabel("El viaje de tus sue\u00F1os");
+		lblViaje.setFont(new Font("Segoe UI Light", Font.PLAIN, 20));
+		lblViaje.setForeground(new Color(255, 255, 255));
+		lblViaje.setBounds(444, 144, 176, 22);
+		panel.add(lblViaje);
+		
+		JLabel lblClicks = new JLabel("solo a unos clicks de distancia");
+		lblClicks.setForeground(Color.WHITE);
+		lblClicks.setFont(new Font("Segoe UI Light", Font.PLAIN, 20));
+		lblClicks.setBounds(405, 189, 254, 22);
+		panel.add(lblClicks);
+		
+		JLabel lblBackG = new JLabel("");
+		lblBackG.setForeground(Color.WHITE);
+		lblBackG.setBounds(0, 5, 1064, 426);
+		lblBackG.setIcon(new ImageIcon("resources\\icons\\backgroundImage.png"));
+		panel.add(lblBackG);
 	}
 }

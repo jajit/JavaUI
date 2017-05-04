@@ -9,13 +9,29 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
 public class MyDialog extends JDialog {
+
+	MyDialog dialog = this;
+	private JPanel panel;
+	private Boolean Outside = false;
+
 	public MyDialog(JFrame parent) {
 		super(parent, true);
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (Outside)
+				SwingUtils.fadeOut(dialog);
+			}
+		});
 
 		setUndecorated(true);
 		//AWTUtilities.setWindowOpaque(this, false);
@@ -27,7 +43,19 @@ public class MyDialog extends JDialog {
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font(label.getFont().getFontName(), Font.PLAIN, 20));
 
-		JPanel panel = new JPanel(new GridBagLayout());
+		panel = new JPanel(new GridBagLayout());
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				//System.out.println("Mouse Exited.");
+				Outside = true;
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				//System.out.println("Mouse Entered.");
+				Outside = false;
+			}
+		});
 		panel.setBackground(new Color(0xAA05579));
 		panel.setLayout(new GridBagLayout());
 		panel.add(label);

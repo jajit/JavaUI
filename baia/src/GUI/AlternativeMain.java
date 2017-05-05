@@ -79,7 +79,8 @@ public class AlternativeMain extends JFrame {
 		panelBot.add(panelFilters);
 		panelFilters.setLayout(null);
 		
-		lblFilters = new JLabel("FILTERS");
+		lblFilters = new JLabel("");
+		lblFilters.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/Filter_50px.png")));
 		lblFilters.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -110,6 +111,18 @@ public class AlternativeMain extends JFrame {
 		panelTop.setBackground(new Color(22,21,23,230));
 		panelTop.setBounds(0, 0, 1064, 68);
 		contentPane.add(panelTop);
+		panelTop.setLayout(null);
+		
+		JLabel lblUserImg = new JLabel("");
+		lblUserImg.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/Gender Neutral User_60px.png")));
+		lblUserImg.setBounds(700, 4, 60, 60);
+		panelTop.add(lblUserImg);
+		
+		JLabel lblUser = new JLabel("Login/Register");
+		lblUser.setForeground(new Color(255, 255, 255));
+		lblUser.setFont(new Font("Segoe UI Light", Font.PLAIN, 24));
+		lblUser.setBounds(770, 11, 205, 46);
+		panelTop.add(lblUser);
 		
 		JPanel panelMid = new JPanel();
 		panelMid.setBackground(new Color(255, 255, 255));
@@ -137,7 +150,7 @@ public class AlternativeMain extends JFrame {
 		panelSearch.add(panelLocation);
 		
 		JLabel lblLoc = new JLabel("");
-		lblLoc.setIcon(new ImageIcon("resources\\icons\\Marker_32px.png"));
+		lblLoc.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/Marker_32px.png")));
 		panelLocation.add(lblLoc);
 		
 		txtDateFrom = new JTextField();
@@ -154,7 +167,7 @@ public class AlternativeMain extends JFrame {
 		panelSearch.add(panelDateFrom);
 		
 		JLabel lblFrom = new JLabel();
-		lblFrom.setIcon(new ImageIcon("resources\\icons\\Date From_32px.png"));
+		lblFrom.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/Date From_32px.png")));
 		panelDateFrom.add(lblFrom);
 		
 		txtDateTo = new JTextField();
@@ -171,7 +184,7 @@ public class AlternativeMain extends JFrame {
 		panelSearch.add(panelDateTo);
 		
 		JLabel lblTo = new JLabel("");
-		lblTo.setIcon(new ImageIcon("resources\\icons\\Date To_32px.png"));
+		lblTo.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/Date To_32px.png")));
 		panelDateTo.add(lblTo);
 		
 		JPanel panelSearchButton = new JPanel();
@@ -193,8 +206,10 @@ public class AlternativeMain extends JFrame {
 				MoveUp();
 			}
 		});
+		lblSearchImg.setFocusable(true);
+		lblSearchImg.requestFocusInWindow();
 		lblSearchImg.setBounds(22, 14, 99, 99);
-		lblSearchImg.setIcon(new ImageIcon("resources\\icons\\Circle_99px.png"));
+		lblSearchImg.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/Circle_99px.png")));
 		panelSearchButton.add(lblSearchImg);
 		
 		lblTrip = new JLabel("The journey of your dreams");
@@ -214,7 +229,7 @@ public class AlternativeMain extends JFrame {
 		JLabel lblBackGround = new JLabel("");
 		lblBackGround.setForeground(Color.WHITE);
 		lblBackGround.setBounds(0, 11, 1064, 420);
-		lblBackGround.setIcon(new ImageIcon("resources\\icons\\backgroundImage.png"));
+		lblBackGround.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/backgroundImage.png")));
 		panelMid.add(lblBackGround);
 	}
 	

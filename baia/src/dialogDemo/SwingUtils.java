@@ -11,6 +11,7 @@ import java.awt.Paint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -23,9 +24,9 @@ import javax.swing.plaf.LayerUI;
 
 /**
  * Collection of utility methods for various stuff with swing applications.
- * @author Aurelien Ribon | http://www.aurelienribon.com
  */
 public class SwingUtils {
+	
 	/**
 	 * Centers the dialog over the given parent component. Also, creates a
 	 * semi-transparent panel behind the dialog to mask the parent content.
@@ -41,7 +42,7 @@ public class SwingUtils {
 
 	/**
 	 * Adds a glass layer to the dialog to intercept all key events. If the
-	 * espace key is pressed, the dialog is disposed (either with a fadeout
+	 * ESC key is pressed, the dialog is disposed (either with a fade out
 	 * animation, or directly).
 	 */
 	public static void addEscapeToCloseSupport(final JDialog dialog, final boolean fadeOnClose) {
@@ -84,7 +85,7 @@ public class SwingUtils {
 		timer.addActionListener(new ActionListener() {
 			private float opacity = 0;
 			@Override public void actionPerformed(ActionEvent e) {
-				opacity += 0.15f;
+				opacity += 0.05f;
 				dialog.setOpacity(Math.min(opacity, 1));
 				if (opacity >= 1) timer.stop();
 			}
@@ -104,7 +105,7 @@ public class SwingUtils {
 		timer.addActionListener(new ActionListener() {
 			private float opacity = 1;
 			@Override public void actionPerformed(ActionEvent e) {
-				opacity -= 0.15f;
+				opacity -= 0.05f;
 				dialog.setOpacity(Math.max(opacity, 0));
 				if (opacity <= 0) {
 					timer.stop();
@@ -120,13 +121,26 @@ public class SwingUtils {
 	// -------------------------------------------------------------------------
 	// Helpers
 	// -------------------------------------------------------------------------
-
+	/**
+	 *  Sets a BackPanel in the back side of the dialog Box and
+	 *  adds a shadow, title and ESC on to close text (commented out)
+	 */
 	private static class DialogBackPanel extends JPanel {
-		private static final Paint fill = new Color(0xAAFFFFFF, true);
+		// Back Panel color + transparency
+		private static final Paint fill = new Color(21,23,22, 100);
+		
+		
+		// Dialog Shadow image
 		private static final ImageIcon shadowImage = new ImageIcon(SwingUtils.class.getResource("dialogShadow.png"));
+		
+		
 		private final JComponent cmp;
 		private final JLabel title = new JLabel();
-		private final JLabel info = new JLabel("Hit 'ESC' to close the dialog");
+		
+		
+		//Only for ESC to close support
+		//private final JLabel info = new JLabel("Hit 'ESC' to close the dialog");
+		
 
 		public DialogBackPanel(JDialog dialog) {
 			this.cmp = (JComponent) dialog.getContentPane();
@@ -135,16 +149,25 @@ public class SwingUtils {
 			setLayout(null);
 			add(cmp);
 			add(title);
-			add(info);
+			
+			
+			//add(info);
 
-			cmp.setBorder(BorderFactory.createLineBorder(Color.WHITE, 5));
+			// Dialog border Line Color + thickness
+			cmp.setBorder(BorderFactory.createLineBorder(new Color(21,23,22), 1));
+			
+			// Dialog title Font + Color
 			title.setFont(new Font("SquareFont", Font.PLAIN, 26));
-			title.setForeground(Color.WHITE);
-			info.setForeground(Color.WHITE);
-
+			title.setForeground(new Color(21,23,22));
+			
+			//Dialog title Text + Size
 			title.setText(dialog.getTitle());
 			title.setSize(title.getPreferredSize());
-			info.setSize(info.getPreferredSize());
+			
+			
+			//info.setSize(info.getPreferredSize());
+			
+			// ContentPane size
 			cmp.setSize(cmp.getPreferredSize());
 		}
 
@@ -159,7 +182,9 @@ public class SwingUtils {
 			int shadowY = h/2 - (cmp.getHeight()+100)/2;
 			cmp.setLocation(w/2-cmp.getWidth()/2, h/2-cmp.getHeight()/2);
 			title.setLocation(w/2-cmp.getWidth()/2, h/2-cmp.getHeight()/2-title.getHeight());
-			info.setLocation(w/2+cmp.getWidth()/2-info.getWidth(), h/2-cmp.getHeight()/2-info.getHeight());
+			
+			
+			//info.setLocation(w/2+cmp.getWidth()/2-info.getWidth(), h/2-cmp.getHeight()/2-info.getHeight());
 
 			Graphics2D gg = (Graphics2D) g.create();
 			gg.setPaint(fill);

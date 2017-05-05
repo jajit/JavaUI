@@ -32,6 +32,9 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import GUI.CustomScrollbarUIExample.MyScrollbarUI;
+import dialogDemo.MyDialog;
+import dialogDemo.MyWindow;
+import dialogDemo.SwingUtils;
 
 import javax.swing.border.EtchedBorder;
 import java.awt.Cursor;
@@ -91,8 +94,8 @@ public class mainGUI extends JFrame {
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				popup bai = new popup();
-				bai.setVisible(true);
+				MyDialog dialog = new MyDialog(mainGUI.this);
+				SwingUtils.fadeIn(dialog);
 			}
 		});
 		lblNewLabel.setIcon(new ImageIcon("resources\\icons\\Xbox Menu_50px.png"));

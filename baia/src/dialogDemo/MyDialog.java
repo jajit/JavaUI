@@ -14,9 +14,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-/**
- * @author Aurelien Ribon | http://www.aurelienribon.com/
- */
+
 public class MyDialog extends JDialog {
 
 	MyDialog dialog = this;
@@ -25,25 +23,42 @@ public class MyDialog extends JDialog {
 
 	public MyDialog(JFrame parent) {
 		super(parent, true);
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (Outside)
-				SwingUtils.fadeOut(dialog);
-			}
-		});
+
 
 		setUndecorated(true);
-		//AWTUtilities.setWindowOpaque(this, false);
-		this.setBackground(new Color(0,0,0,200));
-
+		
+		
+		// Back panel transparency
+		this.setBackground(new Color(0,0,0,0));
+		
+		
+		// Name/Title of the Dialog
 		setTitle("My Dialog");
-
+		
+		
+		// Inside of the Dialog
 		JLabel label = new JLabel("Oh boi!");
-		label.setForeground(Color.WHITE);
 		label.setFont(new Font(label.getFont().getFontName(), Font.PLAIN, 20));
-
+		
+		
+		// Dialog panel
 		panel = new JPanel(new GridBagLayout());
+		panel.setBackground(new Color(21,23,22));
+		panel.setLayout(new GridBagLayout());
+		panel.add(label);
+		//panel.setPreferredSize(new Dimension(400, 300));
+		panel.setPreferredSize(new Dimension(800, 600));
+
+		
+		// The following two lines are only needed because there is no
+		// focusable component in here, and the "hit ESC to close" requires
+		// the focus to be in the dialog. If you have a button, a text field,
+		// or any focusable stuff, you don't need these lines.
+		panel.setFocusable(true);
+		panel.requestFocusInWindow();
+
+		
+		// Support for close on clicking outside the dialog
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -56,21 +71,16 @@ public class MyDialog extends JDialog {
 				Outside = false;
 			}
 		});
-		panel.setBackground(new Color(0xAA05579));
-		panel.setLayout(new GridBagLayout());
-		panel.add(label);
-		panel.setPreferredSize(new Dimension(400, 300));
-
-		// the following two lines are only needed because there is no
-		// focusable component in here, and the "hit espace to close" requires
-		// the focus to be in the dialog. If you have a button, a textfield,
-		// or any focusable stuff, you don't need these lines.
-		panel.setFocusable(true);
-		panel.requestFocusInWindow();
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (Outside)
+					SwingUtils.fadeOut(dialog);
+			}
+		});
 
 		getContentPane().add(panel);
 
 		SwingUtils.createDialogBackPanel(this, parent.getContentPane());
-		SwingUtils.addEscapeToCloseSupport(this, true);
 	}
 }

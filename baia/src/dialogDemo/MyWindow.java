@@ -29,7 +29,7 @@ public class MyWindow extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("My Application");
-		setSize(800, 600);
+		setSize(1600, 1200);
 
 		JButton button = new JButton("Spawn the dialog!");
 		button.setOpaque(false);
@@ -45,7 +45,7 @@ public class MyWindow extends JFrame {
 
 		JPanel panel = new JPanel(new GridBagLayout());
 		panel.add(button);
-		panel.setBackground(new Color(0x405579));
+		panel.setBackground(Color.WHITE);
 		panel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, new Color(0x2A3B57)));
 
 		getContentPane().setLayout(new BorderLayout());

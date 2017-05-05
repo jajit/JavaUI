@@ -163,7 +163,7 @@ public class Login extends JDialog {
 		lblNoAcc.setBounds(56, 253, 192, 22);
 		panel.add(lblNoAcc);
 		
-		JLabel lblNewLabel = new JLabel("Register here!");
+		JLabel lblNewLabel = new JLabel("Register now!");
 		lblNewLabel.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
 		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setBounds(246, 253, 102, 22);

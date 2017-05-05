@@ -158,7 +158,7 @@ public class SwingUtils {
 			
 			// Dialog title Font + Color
 			title.setFont(new Font("SquareFont", Font.PLAIN, 26));
-			title.setForeground(new Color(21,23,22));
+			title.setForeground(Color.WHITE);
 			
 			//Dialog title Text + Size
 			title.setText(dialog.getTitle());

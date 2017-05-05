@@ -139,7 +139,7 @@ public class AlternativeMain extends JFrame {
 		lblUserImg.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MyDialog dialog = new MyDialog(AlternativeMain.this);
+				Login dialog = new Login(AlternativeMain.this);
 				SwingUtils.fadeIn(dialog);
 			}
 		});
@@ -151,7 +151,7 @@ public class AlternativeMain extends JFrame {
 		lblUser.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MyDialog dialog = new MyDialog(AlternativeMain.this);
+				Login dialog = new Login(AlternativeMain.this);
 				SwingUtils.fadeIn(dialog);
 			}
 		});

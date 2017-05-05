@@ -81,7 +81,7 @@ public class Login extends JDialog {
 		panel.add(panelUserImg);
 
 		JLabel lblUserImg = new JLabel("");
-		lblUserImg.setIcon(new ImageIcon(Login.class.getResource("/GUI/icons/Gender Neutral User_32px.png")));
+		lblUserImg.setIcon(new ImageIcon(Register.class.getResource("/GUI/icons/Gender Neutral User_32px.png")));
 		panelUserImg.add(lblUserImg);
 		
 		JPasswordField txtPassword = new JPasswordField();
@@ -115,7 +115,7 @@ public class Login extends JDialog {
 		panel.add(panelPassImg);
 
 		JLabel lblPassImg = new JLabel("");
-		lblPassImg.setIcon(new ImageIcon(Login.class.getResource("/GUI/icons/Lock_32px.png")));
+		lblPassImg.setIcon(new ImageIcon(Register.class.getResource("/GUI/icons/Lock_32px.png")));
 		panelPassImg.add(lblPassImg);
 
 		
@@ -150,12 +150,12 @@ public class Login extends JDialog {
 
 		getContentPane().add(panel);
 		
-		JButton btnNewButton = new JButton("LOG IN");
-		btnNewButton.setBackground(new Color(12, 158, 188));
-		btnNewButton.setBorder(null);
-		btnNewButton.setFont(new Font("Segoe UI Light", Font.PLAIN, 24));
-		btnNewButton.setBounds(68, 197, 263, 45);
-		panel.add(btnNewButton);
+		JButton btnLogin = new JButton("LOG IN");
+		btnLogin.setBackground(new Color(12, 158, 188));
+		btnLogin.setBorder(null);
+		btnLogin.setFont(new Font("Segoe UI Light", Font.PLAIN, 24));
+		btnLogin.setBounds(68, 197, 263, 45);
+		panel.add(btnLogin);
 		
 		JLabel lblNoAcc = new JLabel("Don't have an account yet?");
 		lblNoAcc.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
@@ -163,11 +163,18 @@ public class Login extends JDialog {
 		lblNoAcc.setBounds(56, 253, 192, 22);
 		panel.add(lblNoAcc);
 		
-		JLabel lblNewLabel = new JLabel("Register now!");
-		lblNewLabel.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setBounds(246, 253, 102, 22);
-		panel.add(lblNewLabel);
+		JLabel lblRegister = new JLabel("Register now!");
+		lblRegister.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Register register = new Register(Login.this);
+				SwingUtils.fadeIn(register);
+			}
+		});
+		lblRegister.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
+		lblRegister.setForeground(Color.RED);
+		lblRegister.setBounds(246, 253, 102, 22);
+		panel.add(lblRegister);
 
 		SwingUtils.createDialogBackPanel(this, parent.getContentPane());
 	}

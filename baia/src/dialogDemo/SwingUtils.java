@@ -127,7 +127,7 @@ public class SwingUtils {
 	 */
 	private static class DialogBackPanel extends JPanel {
 		// Back Panel color + transparency
-		private static final Paint fill = new Color(21,23,22, 100);
+		private static final Paint fill = new Color(21,23,22, 200);
 		
 		
 		// Dialog Shadow image
@@ -154,7 +154,7 @@ public class SwingUtils {
 			//add(info);
 
 			// Dialog border Line Color + thickness
-			cmp.setBorder(BorderFactory.createLineBorder(new Color(21,23,22), 1));
+			cmp.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
 			
 			// Dialog title Font + Color
 			title.setFont(new Font("SquareFont", Font.PLAIN, 26));

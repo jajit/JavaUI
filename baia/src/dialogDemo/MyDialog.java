@@ -19,7 +19,7 @@ public class MyDialog extends JDialog {
 
 	MyDialog dialog = this;
 	private JPanel panel;
-	private Boolean Outside = false;
+	private Boolean Outside = true;
 
 	public MyDialog(JFrame parent) {
 		super(parent, true);
@@ -28,7 +28,7 @@ public class MyDialog extends JDialog {
 		setUndecorated(true);
 		
 		
-		// Back panel transparency
+		// Enable back panel transparency
 		this.setBackground(new Color(0,0,0,0));
 		
 		
@@ -38,16 +38,17 @@ public class MyDialog extends JDialog {
 		
 		// Inside of the Dialog
 		JLabel label = new JLabel("Oh boi!");
+		label.setForeground(new Color(255, 255, 255));
 		label.setFont(new Font(label.getFont().getFontName(), Font.PLAIN, 20));
 		
 		
 		// Dialog panel
 		panel = new JPanel(new GridBagLayout());
-		panel.setBackground(new Color(21,23,22));
+		panel.setBackground(new Color(32,33,36));
 		panel.setLayout(new GridBagLayout());
 		panel.add(label);
 		//panel.setPreferredSize(new Dimension(400, 300));
-		panel.setPreferredSize(new Dimension(800, 600));
+		panel.setPreferredSize(new Dimension(700, 525));
 
 		
 		// The following two lines are only needed because there is no

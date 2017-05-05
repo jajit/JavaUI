@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -19,6 +20,9 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.border.BevelBorder;
 
 public class AlternativeMain extends JFrame {
 
@@ -31,6 +35,8 @@ public class AlternativeMain extends JFrame {
 	private JLabel lblTrip;
 	private JLabel lblClicks;
 	private JLabel lblFilters;
+	private JScrollPane panelHouses;
+	private JPanel panelFilters;
 
 	/**
 	 * Launch the application.
@@ -61,23 +67,44 @@ public class AlternativeMain extends JFrame {
 		contentPane.setLayout(null);
 		
 		panelBot = new JPanel();
-		panelBot.setBackground(new Color(22,21,23));
+		panelBot.setBackground(new Color(21,23,22));
 		panelBot.setBounds(0, 430, 1064, 455);
 		contentPane.add(panelBot);
 		panelBot.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(21,22,23));
-		panel.setBounds(0, 0, 72, 455);
-		panelBot.add(panel);
-		panel.setLayout(null);
+		panelFilters = new JPanel();
+		panelFilters.setVisible(false);
+		panelFilters.setBackground(new Color(32,33,36));
+		panelFilters.setBounds(-130, 0, 200, 455);
+		panelBot.add(panelFilters);
+		panelFilters.setLayout(null);
 		
 		lblFilters = new JLabel("FILTERS");
+		lblFilters.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (panelFilters.getX() == -130)
+					MoveRight();
+				else if (panelFilters.getX() == 0)
+					MoveLeft();
+				
+			}
+		});
 		lblFilters.setVisible(false);
 		lblFilters.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFilters.setForeground(new Color(255, 255, 255));
-		lblFilters.setBounds(11, 11, 50, 50);
-		panel.add(lblFilters);
+		lblFilters.setBounds(139, 11, 50, 50);
+		panelFilters.add(lblFilters);
+		
+		panelHouses = new JScrollPane();
+		panelHouses.setBorder(null);
+		panelHouses.setBackground(new Color(21,23,22));
+		panelHouses.setBounds(70, 0, 994, 455);
+		panelBot.add(panelHouses);
+		panelHouses.setLayout(null);
+		
+		JList list = new JList();
+		panelHouses.setViewportView(list);
 		
 		JPanel panelTop = new JPanel();
 		panelTop.setBackground(new Color(22,21,23,230));
@@ -202,10 +229,11 @@ public class AlternativeMain extends JFrame {
 			private int speed = 3;
 			@Override public void actionPerformed(ActionEvent e) {
 				current -= speed;
-				panelBot.setBounds(panelBot.getX(), ((int)Math.max(current, arrival)), panelBot.getWidth(), panelBot.getHeight());
-				panelSearch.setBounds(panelSearch.getX(),(int)(Math.max(panelSearch.getY()-speed,arrivalS)), panelSearch.getWidth(), panelSearch.getHeight());
+				panelBot.setLocation(panelBot.getX(), ((int)Math.max(current, arrival)));
+				panelSearch.setLocation(panelSearch.getX(),(int)(Math.max(panelSearch.getY()-speed,arrivalS)));
 				if (current <= arrival) {
 					timer.stop();
+					panelFilters.setVisible(true);
 					lblFilters.setVisible(true);
 				}
 			}
@@ -214,6 +242,62 @@ public class AlternativeMain extends JFrame {
 		timer.start();
 		lblTrip.setVisible(false);
 		lblClicks.setVisible(false);
+	}
+	private void MoveRight(){
+		final Timer timer = new Timer(10, null);
+		timer.setRepeats(true);
+		timer.addActionListener(new ActionListener() {	
+			private float arrival = 0;
+			private float arrivalO = 200;
+			private float arrivalL = 9;
+			private float initialW = panelHouses.getWidth();
+			private float current = panelFilters.getX();
+			private float currentO = panelHouses.getX();
+			private float currentL = lblFilters.getX();
+			private int speed = 5;
+			@Override public void actionPerformed(ActionEvent e) {
+				current += speed;
+				currentO += speed;
+				currentL -= speed;
+				
+				panelFilters.setLocation((int)(Math.min(current, arrival)), panelFilters.getY());
+				panelHouses.setBounds((int)(Math.min(currentO, arrivalO)),panelHouses.getY(), (int)(Math.max(panelHouses.getWidth()-speed,initialW )), panelHouses.getHeight());
+				lblFilters.setLocation((int)(Math.max(currentL, arrivalL)), lblFilters.getY());
+				if (current >= arrival){
+					timer.stop();
+				}
+			}
+		});
+		
+		timer.start();
+	}
+	private void MoveLeft(){
+		final Timer timer = new Timer(10, null);
+		timer.setRepeats(true);
+		timer.addActionListener(new ActionListener() {	
+			private float arrival = -130;
+			private float arrivalO = 70;
+			private float arrivalL = 139;
+			private float initialW = panelHouses.getWidth();
+			private float current = panelFilters.getX();
+			private float currentO = panelHouses.getX();
+			private float currentL = lblFilters.getX();
+			private int speed = 5;
+			@Override public void actionPerformed(ActionEvent e) {
+				current -= speed;
+				currentO -= speed;
+				currentL += speed;
+				
+				panelFilters.setLocation((int)(Math.max(current, arrival)), panelFilters.getY());
+				panelHouses.setBounds((int)(Math.max(currentO, arrivalO)),panelHouses.getY(),(int)(Math.min(panelHouses.getWidth()+speed,initialW )), panelHouses.getHeight());
+				lblFilters.setLocation((int)(Math.min(currentL, arrivalL)), lblFilters.getY());
+				if (current <= arrival){
+					timer.stop();
+				}
+			}
+		});
+		
+		timer.start();
 	}
 }
 

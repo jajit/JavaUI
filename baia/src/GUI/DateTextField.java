@@ -169,19 +169,20 @@ public class DateTextField extends JTextField {
         int startYear = 1980;
         int lastYear = 2050;
 
-        Color backGroundColor = Color.gray;
-        Color palletTableColor = Color.white;
-        Color todayBackColor = Color.orange;
-        Color weekFontColor = Color.blue;
-        Color dateFontColor = Color.black;
-        Color weekendFontColor = Color.red;
+        Color backGroundColor = Color.white;
+        Color palletTableColor = (new Color(32,33,36));
+        Color todayBackColor = Color.white;
+        Color weekFontColor = (new Color(32,33,36));
+        Color dateFontColor = Color.white;
+        Color weekendFontColor = Color.white;
 
-        Color controlLineColor = Color.white;
-        Color controlTextColor = Color.white;
+        Color controlLineColor = (new Color(32,33,36));
+        Color controlTextColor = (new Color(32,33,36));
 
         JSpinner yearSpin;
         JSpinner monthSpin;
         JButton[][] daysButton = new JButton[6][7];
+        
 
         DatePanel() {
             setLayout(new BorderLayout());
@@ -232,7 +233,7 @@ public class DateTextField extends JTextField {
         }
 
         private JPanel createWeekAndDayPanal() {
-            String colname[] = { "M", "T", "W", "T", "F", "Sa", "Su"};
+            String colname[] = { "Mon", "Tue ", "Wed", " Thu", "Fri", "Sat", "Sun"};
             JPanel panel = new JPanel();
             panel.setFont(new Font("Arial", Font.PLAIN, 10));
             panel.setLayout(new GridLayout(7, 7));
@@ -240,9 +241,9 @@ public class DateTextField extends JTextField {
 
             for (int i = 0; i < 7; i++) {
                 JLabel cell = new JLabel(colname[i]);
-                cell.setHorizontalAlignment(JLabel.RIGHT);
+                cell.setHorizontalAlignment(JLabel.CENTER);
                 if (i == 5 || i == 6) {
-                    cell.setForeground(weekendFontColor);
+                    cell.setForeground(weekFontColor);
                 } else {
                     cell.setForeground(weekFontColor);
                 }
@@ -281,6 +282,7 @@ public class DateTextField extends JTextField {
                     else
                         numBtn.setForeground(dateFontColor);
                     daysButton[i][j] = numBtn;
+                    daysButton[i][j].setHorizontalAlignment(CENTER);
                     panel.add(numBtn);
                     actionCommandId++;
                 }

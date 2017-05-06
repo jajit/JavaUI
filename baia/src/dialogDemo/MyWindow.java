@@ -19,6 +19,7 @@ import GUI.DateTextField;
 import GUI.HouseView;
 import GUI.Login;
 import GUI.PayWarning;
+import GUI.Profile;
 
 import java.awt.GridBagConstraints;
 
@@ -36,7 +37,7 @@ public class MyWindow extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("My Application");
-		setSize(1600, 1200);
+		setSize(1064,680);
 		
 
 		JButton button = new JButton("Spawn the dialog!");
@@ -46,7 +47,7 @@ public class MyWindow extends JFrame {
 		button.setMargin(new Insets(5, 10, 5, 10));
 		button.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				PayWarning dialog = new PayWarning(MyWindow.this);
+				Profile dialog = new Profile(MyWindow.this);
 				//Login dialog = new Login(MyWindow.this);
 				SwingUtils.fadeIn(dialog);
 			}

@@ -34,7 +34,7 @@ public class Register extends JDialog {
 	private JTextField txtName;
 	private JTextField txtSurname;
 	private JTextField txtDni;
-	private JTextField txtBirthDate;
+	private DateTextField txtBirthDate;
 	private JTextField txtAddress;
 
 	public Register(JDialog parent) {
@@ -302,11 +302,11 @@ public class Register extends JDialog {
 		lblSurname.setIcon(new ImageIcon(Register.class.getResource("/GUI/icons/ID Card_32px.png")));
 		panelSurname.add(lblSurname);
 		
-		txtBirthDate = new JTextField();
+		txtBirthDate = new DateTextField();
 		txtBirthDate.setText("Birthdate");
 		txtBirthDate.setForeground(SystemColor.textInactiveText);
 		txtBirthDate.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
-		txtBirthDate.setColumns(10);
+		txtBirthDate.setBackground(Color.WHITE);
 		txtBirthDate.setBorder(null);
 		txtBirthDate.setBounds(81, 247, 212, 45);
 		panel.add(txtBirthDate);

@@ -34,8 +34,8 @@ public class AlternativeMain extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtInsert;
-	private JTextField txtDateFrom;
-	private JTextField txtDateTo;
+	private DateTextField txtDateFrom;
+	private DateTextField txtDateTo;
 	private JPanel panelBot;
 	private JPanel panelSearch;
 	private JLabel lblTrip;
@@ -233,11 +233,12 @@ public class AlternativeMain extends JFrame {
 		lblLoc.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/Marker_32px.png")));
 		panelLocation.add(lblLoc);
 
-		txtDateFrom = new JTextField();
+		txtDateFrom = new DateTextField();
+		txtDateFrom.setBackground(Color.white);
 		txtDateFrom.setForeground(new Color(109,109,109));
 		txtDateFrom.setText("Date From");
 		txtDateFrom.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
-		txtDateFrom.setColumns(10);
+		//txtDateFrom.setColumns(10);
 		txtDateFrom.setBorder(null);
 		txtDateFrom.setBounds(365, 40, 149, 45);
 		panelSearch.add(txtDateFrom);
@@ -251,11 +252,12 @@ public class AlternativeMain extends JFrame {
 		lblFrom.setIcon(new ImageIcon(AlternativeMain.class.getResource("/GUI/icons/Date From_32px.png")));
 		panelDateFrom.add(lblFrom);
 
-		txtDateTo = new JTextField();
+		txtDateTo = new DateTextField();
 		txtDateTo.setForeground(new Color(109,109,109));
+		txtDateTo.setBackground(Color.white);
 		txtDateTo.setText("Date To");
 		txtDateTo.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
-		txtDateTo.setColumns(10);
+		//txtDateTo.setColumns(10);
 		txtDateTo.setBorder(null);
 		txtDateTo.setBounds(569, 40, 149, 45);
 		panelSearch.add(txtDateTo);

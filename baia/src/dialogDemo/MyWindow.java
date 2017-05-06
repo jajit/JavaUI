@@ -16,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import GUI.DateTextField;
+import GUI.HouseView;
+
 import java.awt.GridBagConstraints;
 
 /**
@@ -42,7 +44,7 @@ public class MyWindow extends JFrame {
 		button.setMargin(new Insets(5, 10, 5, 10));
 		button.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				MyDialog dialog = new MyDialog(MyWindow.this);
+				HouseView dialog = new HouseView(MyWindow.this);
 				SwingUtils.fadeIn(dialog);
 			}
 		});

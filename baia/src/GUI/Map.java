@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Color;
 
 public class Map extends JPanel {
 	
@@ -29,6 +30,7 @@ public class Map extends JPanel {
 		this.setLayout(null);	
 		Location = mLocation;
 		Zoom = mZoom;
+		panel.setBackground(new Color(32,33,36));
 		panel.setBounds(0, 0, 300, 300);
 		map.setIcon(getMap(mLocation, mZoom));
 		panel.add(map);
